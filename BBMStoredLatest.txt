@@ -1,0 +1,19 @@
+create table BBMS.StockTransfer(BloodbankId int,HospitalName varchar(20),BloodGroup varchar(5),Quantity int,DateTransfer date)
+
+
+drop table BBMS.StockTransfer
+
+go 
+create proc udp_stocktransfer(
+@id int,
+@name varchar(20),
+@group varchar(5),
+@quantity int,
+@date date)
+as
+begin
+insert into BBMS.StockTransfer values(@id,@name,@group,@quantity,@date)
+end
+go
+
+exec udp_stocktransfer 1010,'ABC','O+ve',12,'02-02-2018'
